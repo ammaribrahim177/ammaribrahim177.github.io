@@ -14,6 +14,8 @@
             --light: #f0f7ff;
             --success: #2e7d32;
             --researcher: #9c27b0;
+            --publication: #5d4037;
+            --presentation: #1565c0;
         }
         
         * {
@@ -416,6 +418,388 @@
             top: -5px;
         }
         
+        /* أنماط قسم المنشورات البحثية */
+        .publications-section {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .publication-card {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #ffa000;
+            transition: all 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .publication-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .publication-date {
+            color: #5d4037;
+            font-weight: 600;
+        }
+        
+        .publication-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .publication-status.published {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .publication-status.accepted {
+            background: #2196f3;
+            color: white;
+        }
+        
+        .publication-status.submitted {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .publication-title {
+            color: #1a237e;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+        
+        .publication-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .journal-name, .journal-quartile, .citation-count {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .journal-name i, .journal-quartile i, .citation-count i {
+            color: #ff9800;
+        }
+        
+        .publication-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        /* قسم العرض التقديمي التفاعلي */
+        .presentation-section {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 1px solid #90caf9;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .presentation-title {
+            color: var(--presentation);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .presentation-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #1976d2, #64b5f6);
+            border-radius: 3px;
+        }
+        
+        .presentation-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            border: 1px solid #e0e7ff;
+            position: relative;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .presentation-viewer {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .presentation-slide {
+            min-width: 100%;
+            height: 100%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .slide-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .slide-image {
+            max-width: 80%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .slide-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f5f7ff;
+            border-top: 1px solid #e0e7ff;
+        }
+        
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-counter {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .presentation-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #0d47a1;
+            text-align: center;
+        }
+        
+        .presentation-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .presentation-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--presentation), #42a5f5);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .presentation-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #0d47a1, #1e88e5);
+        }
+        
+        /* الباحث */
+        .researcher-profile {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 1px solid #ba68c8;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .researcher-title {
+            color: var(--researcher);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .researcher-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #7b1fa2, #e040fb);
+            border-radius: 3px;
+        }
+        
+        .researcher-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .researcher-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #7b1fa2, #e040fb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .researcher-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .researcher-bio {
+            flex: 1;
+        }
+        
+        .researcher-name {
+            font-size: 1.8rem;
+            color: #4a148c;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .researcher-position {
+            font-size: 1.2rem;
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .researcher-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a0072;
+        }
+        
+        .researcher-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .profile-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ieee-link {
+            background: linear-gradient(135deg, #00629b, #00a0df);
+            color: white;
+        }
+        
+        .scopus-link {
+            background: linear-gradient(135deg, #e63828, #ff7f50);
+            color: white;
+        }
+        
+        .presentation-link {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+        }
+        
+        /* لجنة المناقشة والمشرفين */
         .committees-container {
             display: flex;
             flex-wrap: wrap;
@@ -572,120 +956,6 @@
             margin-top: 15px;
         }
         
-        .researcher-profile {
-            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 1px solid #ba68c8;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .researcher-title {
-            color: var(--researcher);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .researcher-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #7b1fa2, #e040fb);
-            border-radius: 3px;
-        }
-        
-        .researcher-info {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 25px;
-        }
-        
-        .researcher-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(45deg, #7b1fa2, #e040fb);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .researcher-photo i {
-            font-size: 70px;
-            color: white;
-        }
-        
-        .researcher-bio {
-            flex: 1;
-        }
-        
-        .researcher-name {
-            font-size: 1.8rem;
-            color: #4a148c;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .researcher-position {
-            font-size: 1.2rem;
-            color: #7b1fa2;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .researcher-desc {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #4a0072;
-        }
-        
-        .researcher-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .profile-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-        
-        .profile-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .ieee-link {
-            background: linear-gradient(135deg, #00629b, #00a0df);
-            color: white;
-        }
-        
-        .scopus-link {
-            background: linear-gradient(135deg, #e63828, #ff7f50);
-            color: white;
-        }
-        
         .social-sharing {
             display: flex;
             justify-content: center;
@@ -824,6 +1094,19 @@
             .countdown-number {
                 font-size: 2rem;
             }
+            
+            .publication-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .publication-title {
+                font-size: 1.2rem;
+            }
+            
+            .presentation-container {
+                height: 400px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -871,6 +1154,18 @@
             .profile-link {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .presentation-container {
+                height: 350px;
+            }
+            
+            .slide-title {
+                font-size: 1.4rem;
+            }
+            
+            .slide-content {
+                font-size: 1.0rem;
             }
         }
     </style>
@@ -969,6 +1264,88 @@
                 <p>تمثل هذه الدراسة إسهاماً علمياً وعملياً في مجال أمان إنترنت الأشياء، وتقدم حلاً شاملاً للتحديات الأمنية في العصر الرقمي المتسارع النمو.</p>
             </div>
             
+            <!-- قسم الإنجازات البحثية -->
+            <div class="section-title">
+                <i class="fas fa-file-alt"></i>
+                الإنجازات البحثية المنشورة
+            </div>
+            
+            <div class="publications-section">
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <span class="publication-date">نشر في أبريل 2024</span>
+                        <span class="publication-status published">منشور</span>
+                    </div>
+                    <h3 class="publication-title">
+                        DDoS Mitigation in IoT Using Machine Learning and Blockchain Integration
+                        <span class="publication-badge">IEEE</span>
+                    </h3>
+                    <div class="publication-details">
+                        <span class="journal-name"><i class="fas fa-book"></i> IEEE Networking Letters</span>
+                        <span class="journal-quartile"><i class="fas fa-chart-line"></i> Q1 (SCImago)</span>
+                        <span class="citation-count"><i class="fas fa-quote-right"></i> 4 استشهادات</span>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <span class="publication-date">مقبول في مارس 2025</span>
+                        <span class="publication-status published">مقبول</span>
+                    </div>
+                    <h3 class="publication-title">
+                        DDoS Mitigation in IoT Using Machine Learning and Blockchain Integration
+                        <span class="publication-badge">IEEE</span>
+                    </h3>
+                    <div class="publication-details">
+                        <span class="journal-name"><i class="fas fa-book"></i> IEEE CHINA COMMUNCATION</span>
+                        <span class="journal-quartile"><i class="fas fa-chart-line"></i> Q1 (SCImago)</span>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <span class="publication-date">فبراير 2025</span>
+                        <span class="publication-status published">منشور</span>
+                    </div>
+                    <h3 class="publication-title">
+                        Mitigating Version Number Attacks in RPL-Based IoT Networks: A Machine Learning Approach
+                        <span class="publication-badge">جامعي</span>
+                    </h3>
+                    <div class="publication-details">
+                        <span class="journal-name"><i class="fas fa-book"></i> Journal of Engineering Science and Military Technologies</span>
+                        <span class="journal-quartile"><i class="fas fa-chart-line"></i> الكلية الفنية العسكرية</span>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <span class="publication-date">سبتمبر 2023</span>
+                        <span class="publication-status published">منشور</span>
+                    </div>
+                    <h3 class="publication-title">
+                        Blockchain for Decentralized Emergency Management System
+                        <span class="publication-badge">Q3</span>
+                    </h3>
+                    <div class="publication-details">
+                        <span class="journal-name"><i class="fas fa-book"></i> International Journal of Computing and Digital Systems</span>
+                        <span class="journal-quartile"><i class="fas fa-chart-line"></i> Q3</span>
+                        <span class="citation-count"><i class="fas fa-quote-right"></i> 1 استشهاد</span>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <span class="publication-date">قيد المراجعة</span>
+                        <span class="publication-status submitted">قيد التقديم</span>
+                    </div>
+                    <h3 class="publication-title">
+                        Stability Analysis and Mitigation of DDoS Attacks in Wireless Sensor Networks
+                        <span class="publication-badge">IEEE</span>
+                    </h3>
+                    <div class="publication-details">
+                        <span class="journal-name"><i class="fas fa-book"></i> تحت التقديم: IEEE IoT</span>
+                    </div>
+                </div>
+            </div>
+            <!-- قسم الباحث -->
             <div class="researcher-profile">
                 <div class="researcher-title">
                     <i class="fas fa-user-tie"></i>
@@ -977,7 +1354,7 @@
                 
                 <div class="researcher-info">
                     <div class="researcher-photo">
-                        <i class="fas fa-user-graduate"></i>
+                        <img src="https://i1.rgstatic.net/ii/profile.image/11431281234073311-1712204341508_Q128/Ammar-El-Sayed.jpg" alt="صورة الباحث">
                     </div>
                     <div class="researcher-bio">
                         <div class="researcher-name">نقيب مهندس عمار ابراهيم السيد</div>
@@ -1001,6 +1378,7 @@
                 </div>
             </div>
             
+            <!-- لجنة المناقشة -->
             <div class="section-title">
                 <i class="fas fa-users"></i>
                 لجنة المناقشة والحكم
@@ -1022,6 +1400,7 @@
                 </div>
             </div>
             
+            <!-- المشرفون -->
             <div class="section-title">
                 <i class="fas fa-user-graduate"></i>
                 المشرفون على الرسالة
@@ -1031,7 +1410,7 @@
                 <div class="supervisor-card">
                     <div class="supervisor-title">المشرف الرئيسي</div>
                     <div class="supervisor-name">لواء أ.د/ أشرف ضياء الدين البيومي</div>
-                    <div class="supervisor-affiliation">الكلية الفنية العسكرية</div>
+                    <div class="supervisor-affiliation">مدير الكلية الفنية العسكرية</div>
                 </div>
                 
                 <div class="supervisor-card">
@@ -1047,6 +1426,7 @@
                 </div>
             </div>
             
+            <!-- مشاركة اجتماعية -->
             <div class="social-sharing">
                 <a href="#" class="social-btn facebook">
                     <i class="fab fa-facebook-f"></i>
@@ -1068,7 +1448,7 @@
     
     <footer>
         <p>© 2025 -  الكلية الفنية العسكرية</p>
-        <p></p>
+        <p>جميع الحقوق محفوظة</p>
     </footer>
 
     <script>
@@ -1090,12 +1470,11 @@
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             } else {
-                document.querySelector('.countdown-container').innerHTML = `
-                    <div class="countdown-title">لقد بدأت المناقشة الآن</div>
+                document.querySelector('.countdown-container').innerHTML = 
+                    `<div class="countdown-title">لقد بدأت المناقشة الآن</div>
                     <div style="font-size: 1.5rem; margin-top: 20px;">
                         نرحب بحضوركم الكريم في القاعة الرئيسية
-                    </div>
-                `;
+                    </div>`;
             }
         }
         
@@ -1113,6 +1492,47 @@
             });
         });
         
+        // Presentation navigation
+        const slideContainer = document.querySelector('.slide-container');
+        const slides = document.querySelectorAll('.presentation-slide');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        const currentSlideEl = document.getElementById('current-slide');
+        const totalSlidesEl = document.getElementById('total-slides');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        
+        totalSlidesEl.textContent = totalSlides;
+        currentSlideEl.textContent = currentSlide + 1;
+        
+        function updateSlidePosition() {
+            slideContainer.scrollTo({
+                left: currentSlide * slideContainer.offsetWidth,
+                behavior: 'smooth'
+            });
+            currentSlideEl.textContent = currentSlide + 1;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlidePosition();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlidePosition();
+            }
+        });
+        
+        // Download presentation button
+        document.getElementById('download-presentation').addEventListener('click', function() {
+            alert('سيبدأ تنزيل العرض التقديمي الآن. شكراً لاهتمامكم!');
+        });
+        
         // Add animations on scroll
         const observerOptions = {
             root: null,
@@ -1128,7 +1548,7 @@
             });
         }, observerOptions);
         
-        document.querySelectorAll('.detail-card, .committee-section, .supervisor-card').forEach(el => {
+        document.querySelectorAll('.detail-card, .committee-section, .supervisor-card, .publication-card, .presentation-section').forEach(el => {
             observer.observe(el);
         });
     </script>
