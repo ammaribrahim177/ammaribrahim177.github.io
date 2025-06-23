@@ -1168,6 +1168,86 @@
                 font-size: 1.0rem;
             }
         }
+        .presentation-section {
+    background-color: #f9f9fb;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Cairo', sans-serif;
+    max-width: 960px;
+    direction: rtl;
+}
+
+.presentation-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.responsive-iframe {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.responsive-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.presentation-description {
+    margin-top: 15px;
+    color: #444;
+    font-size: 1rem;
+}
+
+.presentation-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.presentation-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.presentation-btn:hover {
+    background-color: #0056b3;
+}
+
+.researcher-info {
+    margin-top: 25px;
+    background: #eef3f8;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+}
+
     </style>
 </head>
 <body>
@@ -1345,6 +1425,47 @@
                     </div>
                 </div>
             </div>
+  <!-- قسم العرض التقديمي المدمج -->
+<div class="presentation-section">
+    <div class="presentation-title">
+        <i class="fas fa-desktop"></i>
+        العرض التقديمي للرسالة
+    </div>
+
+    <div class="presentation-container">
+        <div class="presentation-viewer">
+            <div class="responsive-iframe">
+                <iframe 
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/pubembed?start=true&loop=true&delayms=3000"
+                    frameborder="0"
+                    allowfullscreen
+                    mozallowfullscreen
+                    webkitallowfullscreen
+                    title="عرض تقديمي من Google Slides">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <p class="presentation-description">
+        يمكنك تصفح العرض التقديمي مباشرة من خلال النافذة أعلاه. استخدم أزرار التنقل داخل العرض للتحكم في الشرائح، أو افتحه في نافذة مستقلة لمشاهدة أوضح.
+    </p>
+
+    <div class="presentation-actions">
+        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" 
+           class="presentation-btn download" 
+           download="Presentation.pptx">
+            <i class="fas fa-download"></i> تنزيل العرض التقديمي
+        </a>
+        <a href="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/preview" 
+           class="presentation-btn view" 
+           target="_blank">
+            <i class="fas fa-expand"></i> فتح في نافذة جديدة
+        </a>
+        <button onclick="copyLink()" class="presentation-btn share">
+            <i class="fas fa-share-alt"></i> نسخ رابط المشاركة
+        </button>
+    </div>
             <!-- قسم الباحث -->
             <div class="researcher-profile">
                 <div class="researcher-title">
