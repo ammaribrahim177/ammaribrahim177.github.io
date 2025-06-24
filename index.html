@@ -6,6 +6,7 @@
     <title>دعوة مناقشة دكتوراه - تعزيز أمان أنظمة الأشياء المتصلة بالإنترنت</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
     <style>
         :root {
             --primary: #1a237e;
@@ -16,6 +17,7 @@
             --researcher: #9c27b0;
             --publication: #5d4037;
             --presentation: #1565c0;
+            --error: #d32f2f;
         }
         
         * {
@@ -507,7 +509,7 @@
             margin-left: 10px;
         }
         
-        /* قسم العرض التقديمي التفاعلي */
+        /* قسم العرض التقديمي المدمج */
         .presentation-section {
             background: linear-gradient(135deg, #e3f2fd, #bbdefb);
             padding: 30px;
@@ -546,97 +548,22 @@
             margin-bottom: 25px;
             border: 1px solid #e0e7ff;
             position: relative;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
         }
         
-        .presentation-viewer {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
+        .responsive-iframe {
             position: relative;
-        }
-        
-        .slide-container {
-            flex: 1;
-            display: flex;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
             overflow: hidden;
-            scroll-behavior: smooth;
         }
         
-        .presentation-slide {
-            min-width: 100%;
+        .responsive-iframe iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.5s ease;
-        }
-        
-        .slide-title {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        .slide-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .slide-image {
-            max-width: 80%;
-            max-height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        
-        .slide-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 15px;
-            background: #f5f7ff;
-            border-top: 1px solid #e0e7ff;
-        }
-        
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary);
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .slide-counter {
-            display: flex;
-            align-items: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
         }
         
         .presentation-description {
@@ -675,6 +602,22 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             background: linear-gradient(135deg, #0d47a1, #1e88e5);
+        }
+        
+        .presentation-btn.download {
+            background: linear-gradient(135deg, var(--success), #4caf50);
+        }
+        
+        .presentation-btn.download:hover {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        }
+        
+        .presentation-btn.share {
+            background: linear-gradient(135deg, var(--researcher), #ba68c8);
+        }
+        
+        .presentation-btn.share:hover {
+            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
         }
         
         /* الباحث */
@@ -791,11 +734,6 @@
         
         .scopus-link {
             background: linear-gradient(135deg, #e63828, #ff7f50);
-            color: white;
-        }
-        
-        .presentation-link {
-            background: linear-gradient(135deg, #ff9800, #ff5722);
             color: white;
         }
         
@@ -956,6 +894,38 @@
             margin-top: 15px;
         }
         
+        /* التقويم */
+        #calendar {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e7ff;
+        }
+        
+        .fc .fc-toolbar-title {
+            color: var(--primary);
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .fc .fc-button {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .fc .fc-button:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .fc-event {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        /* مشاركة اجتماعية */
         .social-sharing {
             display: flex;
             justify-content: center;
@@ -985,6 +955,26 @@
         .twitter { background: #1da1f2; }
         .whatsapp { background: #25d366; }
         .link { background: var(--primary); }
+        
+        /* إشعار */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
         
         footer {
             text-align: center;
@@ -1103,10 +1093,6 @@
             .publication-title {
                 font-size: 1.2rem;
             }
-            
-            .presentation-container {
-                height: 400px;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1156,98 +1142,16 @@
                 justify-content: center;
             }
             
-            .presentation-container {
-                height: 350px;
+            .presentation-actions {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .slide-title {
-                font-size: 1.4rem;
-            }
-            
-            .slide-content {
-                font-size: 1.0rem;
+            .presentation-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
-        .presentation-section {
-    background-color: #f9f9fb;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Cairo', sans-serif;
-    max-width: 960px;
-    direction: rtl;
-}
-
-.presentation-title {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.responsive-iframe {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-.responsive-iframe iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.presentation-description {
-    margin-top: 15px;
-    color: #444;
-    font-size: 1rem;
-}
-
-.presentation-actions {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.presentation-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.3s ease;
-}
-
-.presentation-btn:hover {
-    background-color: #0056b3;
-}
-
-.researcher-info {
-    margin-top: 25px;
-    background: #eef3f8;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #333;
-}
-
     </style>
 </head>
 <body>
@@ -1366,10 +1270,11 @@
                         <span class="citation-count"><i class="fas fa-quote-right"></i> 4 استشهادات</span>
                     </div>
                 </div>
+                
                 <div class="publication-card">
                     <div class="publication-header">
                         <span class="publication-date">مقبول في مارس 2025</span>
-                        <span class="publication-status published">مقبول</span>
+                        <span class="publication-status accepted">مقبول</span>
                     </div>
                     <h3 class="publication-title">
                         DDoS Mitigation in IoT Using Machine Learning and Blockchain Integration
@@ -1380,6 +1285,7 @@
                         <span class="journal-quartile"><i class="fas fa-chart-line"></i> Q1 (SCImago)</span>
                     </div>
                 </div>
+                
                 <div class="publication-card">
                     <div class="publication-header">
                         <span class="publication-date">فبراير 2025</span>
@@ -1425,48 +1331,56 @@
                     </div>
                 </div>
             </div>
-  <!-- قسم العرض التقديمي المدمج -->
-<div class="presentation-section">
-    <div class="presentation-title">
-        <i class="fas fa-desktop"></i>
-        العرض التقديمي للرسالة
-    </div>
-
-    <div class="presentation-container">
-        <div class="presentation-viewer">
-            <div class="responsive-iframe">
-                <iframe 
-                    src="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/pubembed?start=true&loop=true&delayms=3000"
-                    frameborder="0"
-                    allowfullscreen
-                    mozallowfullscreen
-                    webkitallowfullscreen
-                    title="عرض تقديمي من Google Slides">
-                </iframe>
+            
+            <!-- قسم العرض التقديمي -->
+            <div class="presentation-section">
+                <div class="presentation-title">
+                    <i class="fas fa-desktop"></i>
+                    العرض التقديمي للرسالة
+                </div>
+                
+                <div class="presentation-container">
+                    <div class="responsive-iframe">
+                        <iframe 
+                            src="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/embed?start=true&loop=true&delayms=3000" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            mozallowfullscreen="true" 
+                            webkitallowfullscreen="true"
+                            title="عرض تقديمي لرسالة الدكتوراه">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <p class="presentation-description">
+                    يمكنك تصفح العرض التقديمي مباشرة من خلال النافذة أعلاه. استخدم أزرار التنقل داخل العرض للتحكم في الشرائح، أو افتحه في نافذة مستقلة لمشاهدة أوضح.
+                </p>
+                
+                <div class="presentation-actions">
+                    <a href="https://docs.google.com/presentation/d/1YOUR_FILE_ID/export/pptx" 
+                       class="presentation-btn download" 
+                       download="PhD_Presentation.pptx">
+                        <i class="fas fa-download"></i> تنزيل العرض التقديمي
+                    </a>
+                    <a href="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/pub?start=true&loop=true&delayms=3000" 
+                       class="presentation-btn" 
+                       target="_blank">
+                        <i class="fas fa-expand"></i> فتح في نافذة جديدة
+                    </a>
+                    <button onclick="copyPresentationLink()" class="presentation-btn share">
+                        <i class="fas fa-share-alt"></i> مشاركة العرض
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <p class="presentation-description">
-        يمكنك تصفح العرض التقديمي مباشرة من خلال النافذة أعلاه. استخدم أزرار التنقل داخل العرض للتحكم في الشرائح، أو افتحه في نافذة مستقلة لمشاهدة أوضح.
-    </p>
-
-    <div class="presentation-actions">
-        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" 
-           class="presentation-btn download" 
-           download="Presentation.pptx">
-            <i class="fas fa-download"></i> تنزيل العرض التقديمي
-        </a>
-        <a href="https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/preview" 
-           class="presentation-btn view" 
-           target="_blank">
-            <i class="fas fa-expand"></i> فتح في نافذة جديدة
-        </a>
-        <button onclick="copyLink()" class="presentation-btn share">
-            <i class="fas fa-share-alt"></i> نسخ رابط المشاركة
-        </button>
-    </div>
-</div>
+            
+            <!-- تقويم المناقشة -->
+            <div class="section-title">
+                <i class="far fa-calendar-check"></i>
+                تقويم المناقشة
+            </div>
+            
+            <div id="calendar"></div>
+            
             <!-- قسم الباحث -->
             <div class="researcher-profile">
                 <div class="researcher-title">
@@ -1550,29 +1464,34 @@
             
             <!-- مشاركة اجتماعية -->
             <div class="social-sharing">
-                <a href="#" class="social-btn facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_WEBSITE_URL" class="social-btn facebook" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-btn twitter">
+                <a href="https://twitter.com/intent/tweet?url=YOUR_WEBSITE_URL&text=دعوة%20مناقشة%20دكتوراه" class="social-btn twitter" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="social-btn whatsapp">
+                <a href="https://wa.me/?text=دعوة%20مناقشة%20دكتوراه%20-%20YOUR_WEBSITE_URL" class="social-btn whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <a href="#" class="social-btn link" id="copyLinkBtn">
                     <i class="fas fa-link"></i>
                 </a>
             </div>
+            
+            <div class="toast" id="toastNotification"></div>
         </div>
         
         <div class="signature">مع خالص التقدير والاحترام،<br>نقيب مهندس عمار ابراهيم السيد</div>
     </div>
     
     <footer>
-        <p>© 2025 -  الكلية الفنية العسكرية</p>
+        <p>© 2025 - الكلية الفنية العسكرية</p>
         <p>جميع الحقوق محفوظة</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ar.min.js"></script>
+    
     <script>
         // Countdown timer
         const eventDate = new Date('2025-06-28T10:00:00');
@@ -1610,49 +1529,59 @@
             const url = window.location.href;
             
             navigator.clipboard.writeText(url).then(() => {
-                alert('تم نسخ رابط الدعوة إلى الحافظة!');
+                showToast('تم نسخ رابط الدعوة إلى الحافظة!');
             });
         });
         
-        // Presentation navigation
-        const slideContainer = document.querySelector('.slide-container');
-        const slides = document.querySelectorAll('.presentation-slide');
-        const prevBtn = document.getElementById('prev-slide');
-        const nextBtn = document.getElementById('next-slide');
-        const currentSlideEl = document.getElementById('current-slide');
-        const totalSlidesEl = document.getElementById('total-slides');
-        
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        
-        totalSlidesEl.textContent = totalSlides;
-        currentSlideEl.textContent = currentSlide + 1;
-        
-        function updateSlidePosition() {
-            slideContainer.scrollTo({
-                left: currentSlide * slideContainer.offsetWidth,
-                behavior: 'smooth'
+        // Copy presentation link
+        function copyPresentationLink() {
+            const url = 'https://docs.google.com/presentation/d/e/2PACX-1vT_QZzf75O2nGiW6Ze9M1KoDb_WgBVTyffbbzOm-AnAhEg2z96k5w4du1rCa2sDAg/pub?start=true&loop=true&delayms=3000';
+            
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('تم نسخ رابط العرض التقديمي إلى الحافظة!');
             });
-            currentSlideEl.textContent = currentSlide + 1;
         }
         
-        prevBtn.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlidePosition();
-            }
-        });
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
         
-        nextBtn.addEventListener('click', () => {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlidePosition();
-            }
-        });
-        
-        // Download presentation button
-        document.getElementById('download-presentation').addEventListener('click', function() {
-            alert('سيبدأ تنزيل العرض التقديمي الآن. شكراً لاهتمامكم!');
+        // Initialize calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'ar',
+                headerToolbar: {
+                    start: 'today',
+                    center: 'title',
+                    end: 'prev,next'
+                },
+                events: [
+                    {
+                        title: 'مناقشة الدكتوراه',
+                        start: '2025-06-28T10:00:00',
+                        color: '#ff9800',
+                        description: 'مناقشة رسالة الدكتوراه - القاعة الرئيسية'
+                    }
+                ],
+                eventContent: function(arg) {
+                    return {
+                        html: `<div class="fc-event-title">${arg.event.title}</div>
+                               <div class="fc-event-time">10:00 ص</div>`
+                    };
+                }
+            });
+            
+            calendar.render();
         });
         
         // Add animations on scroll
